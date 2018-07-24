@@ -13,9 +13,13 @@ for path in notebook_path_lst:
     notebook_str = notebook.read()
     notebook_json = json.loads(notebook_str)
     cells = notebook_json['cells']
+    del notebook_json['cells']
     cells_lst += (cells)
 target_notebook['cells'] = cells_lst
-
+target_notebook.update(notebook_json)
+target_str = json.dumps(target_notebook)
+target = open('target_notebook.ipynb','w')
+target.write(target_str)
 
 
 '''
