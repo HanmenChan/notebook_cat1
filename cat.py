@@ -19,14 +19,14 @@ del notebook1_json['cells']
 
 
 #拼接
-cells = cells1 + cells2
+target_cells = cells1 + cells2
 
 target_notebook = {}
 
-target_notebook['cells'] = cells
+target_notebook['cells'] = target_cells
 target_notebook.update(notebook1_json)
 
-cells_str = json.dumps(target_notebook)
+target_str = json.dumps(target_notebook)
 
 target = open('target_notebook.ipynb','w')
-target.write(cells_str)
+target.write(target_str)
