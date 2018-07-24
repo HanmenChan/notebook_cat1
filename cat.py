@@ -15,10 +15,18 @@ notebook2_json = json.loads(notebook2_str)
 
 cells2 = notebook2_json['cells']
 
+del notebook1_json['cells']
+
+
 #拼接
 cells = cells1 + cells2
 
-cells_json = json.dumps(cells)
+target_notebook = {}
+
+target_notebook['cells'] = cells
+target_notebook.update(notebook1_json)
+
+cells_str = json.dumps(target_notebook)
 
 target = open('target_notebook.ipynb','w')
-target.write(cells_json)
+target.write(cells_str)
